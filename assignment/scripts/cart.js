@@ -26,6 +26,7 @@ function empty (emptyArray){
         emptyArray.pop();
     }
     console.log('emptied array:'); 
+    return emptyArray
 }
 
 function listItems (listArray){
@@ -44,12 +45,22 @@ function isFull(arrayFull){
     }
 }
 
-function removeItem(){}
+function removeItem(item){   
+
+   if(basket.includes(item)){
+        basket.splice(basket.indexOf(item), 1); 
+        console.log(item + ' was removed');
+        return item;
+    }
+   else{
+       return null;
+   }
+}
 
 addItem('Fork');
-addItem();          // unable to be added
 addItem('Knife');
 addItem('Spoon');
+addItem();          // unable to be added
 
 console.log('basket is now', basket);
 
@@ -64,10 +75,18 @@ addItem('Knife');
 addItem('Spoon');
 addItem('Bowl'); // will fit
 addItem('Plate') // will fit
-addItem('Cat');  // wont fit
+addItem('Burger');  // wont fit
 addItem();       // unable to be added
 
 console.log('basket is now', basket);
 
 isFull(basket);
+
+removeItem('Spoon');
+removeItem('Bowl');
+removeItem('Taco'); // wont show up // wasnt in basket
+
+addItem('Steak');
+
+console.log('basket is now', basket);
 
