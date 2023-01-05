@@ -3,38 +3,71 @@ console.log('***** Cart Functions *****');
 // We want to see how you are testing your code!!!
 
 let basket = [];
+const maxItems = 5
 
 function addItem (item) {
-    if (item != undefined){
+    if (item != undefined && isFull(basket) === false){ // item can fit and be defined
         basket.push(item);
-        console.log('added', item + ':', basket);
+        console.log('added', item);
         return true;
     }
-    else{
-        console.log('nothing added');
+    else if (item != undefined && isFull(basket) === true){ // item cant fit
+        console.log(item + ' wont fit');
+        return false
     }
-    
-}
-
-function empty (array){
-    array = [];
-    console.log('emptied array:', array);
-}
-
-function listItems (array){
-    console.log('listing items in');
-    for (let i = 0; i < array.length; i++) {
-        console.log(array[i]);
+    else {
+        console.log('unable to be added'); // item is undefined
+        return false
     }
 }
+
+function empty (emptyArray){
+    for (let i = 0; i < emptyArray.length;) {
+        emptyArray.pop();
+    }
+    console.log('emptied array:'); 
+}
+
+function listItems (listArray){
+    console.log('listed items:');
+    for (let i = 0; i < listArray.length; i++) {
+        console.log(listArray[i]);
+    }
+}
+
+function isFull(arrayFull){
+    if (arrayFull.length < maxItems){
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function removeItem(){}
 
 addItem('Fork');
-addItem();
+addItem();          // unable to be added
 addItem('Knife');
 addItem('Spoon');
+
+console.log('basket is now', basket);
 
 listItems(basket);
 
 empty(basket);
 
+console.log('basket is now', basket);
+
+addItem('Fork');
+addItem('Knife');
+addItem('Spoon');
+addItem('Bowl'); // will fit
+addItem('Plate') // will fit
+addItem('Cat');  // wont fit
+addItem();       // unable to be added
+
+console.log('basket is now', basket);
+
+isFull(basket);
 
