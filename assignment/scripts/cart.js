@@ -6,7 +6,7 @@ let basket = [];
 const maxItems = 5
 
 function addItem (item) {
-    if (item != undefined && isFull(basket) === false){ // item can fit and be defined
+    if (isFull(basket) === false && typeof item === 'string'){ // item can fit and be defined
         basket.push(item);
         console.log('added', item);
         return true;
