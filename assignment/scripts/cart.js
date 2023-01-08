@@ -11,7 +11,7 @@ function addItem (item) {
         console.log('added', item);
         return true;
     }
-    else if (item != undefined && isFull(basket) === true){ // item cant fit
+    else if (isFull(basket) === true && typeof item === 'string'){ // item cant fit
         console.log(item + ' wont fit');
         return false
     }
@@ -31,7 +31,7 @@ function empty (emptyArray){
 
 function listItems (listArray){
     console.log('listed items:');
-    for (let i = 0; i < listArray.length; i++) {
+    for (let i in listArray) {
         console.log(listArray[i]);
     }
 }
